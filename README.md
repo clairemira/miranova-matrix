@@ -11,6 +11,6 @@ This page hosts a fast-access public mirror of **The Miranova Matrix**, an opera
 
 The canonical, versioned archive (including DOI) is hosted on Zenodo:
 
-🔗 [https://doi.org/XXXXXXXXXX](https://doi.org/10.5281/zenodo.18158338)
+🔗 [https://doi.org/10.5281/zenodo.18158338](https://doi.org/10.5281/zenodo.18158338)
 
 (This GitHub page exists purely to improve accessibility and availability.)

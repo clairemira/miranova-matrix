@@ -11,17 +11,15 @@
       content="Claire Mira Shaw — author of The Miranova Matrix, an operational framework exploring constraint, capacity, and coherence across complex systems. Links to the paper, OSF, Zenodo, ORCID, and GitHub."
     />
 
-    <link rel="canonical" href="https://clairemira.github.io" />
+    <link rel="canonical" href="https://miranova.dev" />
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Claire Mira Shaw | Author of The Miranova Matrix" />
-
     <meta
       property="og:description"
       content="Landing page for The Miranova Matrix, authored by Claire Mira Shaw. Links to the paper, OSF, Zenodo, ORCID, and GitHub."
     />
-
-    <meta property="og:url" content="https://clairemira.github.io/" />
+    <meta property="og:url" content="https://miranova.dev/" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary" />
@@ -32,108 +30,224 @@
     />
 
     <style>
+      html { background: rgba(2, 6, 23, 1); }
+
+      header.hero strong {
+        font-weight: 600;
+      }
+
+      /* Fixed (non-tiling) background layer */
+      html::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        background:
+          radial-gradient(1000px 600px at 20% 10%, rgba(56, 189, 248, 0.18), transparent 60%),
+          radial-gradient(900px 700px at 80% 30%, rgba(99, 102, 241, 0.16), transparent 60%),
+          radial-gradient(700px 500px at 40% 90%, rgba(103, 232, 249, 0.14), transparent 60%),
+          linear-gradient(180deg, rgba(2, 6, 23, 1) 0%, rgba(2, 8, 20, 1) 60%, rgba(2, 6, 23, 1) 100%);
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
       :root {
-        --bg: #0b0f14;
-        --card: #121825;
-        --text: #e8eef7;
-        --muted: #a9b4c3;
-        --link: #7cc0ff;
-        --border: rgba(255, 255, 255, 0.08);
+        --bg0: #070a10;
+        --bg1: #0b1020;
+        --panel: rgba(17, 24, 39, 0.72);
+        --panel-strong: rgba(17, 24, 39, 0.88);
+        --text: #eaf2ff;
+        --muted: rgba(234, 242, 255, 0.72);
+        --muted2: rgba(234, 242, 255, 0.6);
+        --border: rgba(255, 255, 255, 0.09);
+        --border-strong: rgba(255, 255, 255, 0.13);
+        --link: #8cc8ff;
+        --ring: rgba(56, 189, 248, 0.18);
+        --shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+        --radius: 18px;
+        --radius-sm: 14px;
       }
 
       * { box-sizing: border-box; }
-      html, body { margin: 0; padding: 0; }
+      html, body {
+        /* color: var(--text); */
+        background: transparent;
+        min-height: 100vh;
+position: relative; margin: 0; padding: 0; height: 100%; }
+      body { overflow-x: hidden; }
+
       body {
         font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-        background: radial-gradient(1200px 600px at 50% -10%, rgba(124, 192, 255, 0.18), transparent 60%),
-                    var(--bg);
         color: var(--text);
         line-height: 1.55;
+
+        /* Mantine-ish layered dark backdrop */
+        background:
+          radial-gradient(900px 500px at 20% 10%, rgba(56, 189, 248, 0.18), transparent 60%),
+          radial-gradient(900px 500px at 80% 0%, rgba(99, 102, 241, 0.14), transparent 55%),
+          radial-gradient(900px 600px at 50% 110%, rgba(59, 130, 246, 0.10), transparent 55%),
+          linear-gradient(180deg, var(--bg0), var(--bg1));
+      }
+
+      /* Subtle dot grid overlay */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background-image:
+          radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+        background-size: 26px 26px;
+        mask-image: radial-gradient(800px 500px at 50% 10%, rgba(0,0,0,0.9), transparent 75%);
+        opacity: 0.55;
       }
 
       .wrap {
-        max-width: 920px;
+        max-width: 980px;
         margin: 0 auto;
-        padding: 48px 20px 64px;
+        padding: 54px 18px 70px;
+        position: relative;
       }
 
-      header {
-        padding: 28px 24px;
+      header.hero {
+        padding: 22px 20px;
+        border-radius: var(--radius-sm);
         border: 1px solid var(--border);
-        background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
-        border-radius: 16px;
-        backdrop-filter: blur(6px);
+        background: var(--panel);
+        box-shadow: 0 10px 26px rgba(0,0,0,0.28);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        overflow: hidden;
+        position: relative;
+      }
+
+      .hero-inner {
+        position: relative;
+        z-index: 1;
       }
 
       h1 {
-        margin: 0 0 8px;
-        font-size: 2rem;
-        letter-spacing: 0.2px;
+        margin: 0 0 10px;
+        font-size: clamp(2.2rem, 3.4vw, 3.05rem);
+        letter-spacing: -0.4px;
+        line-height: 1.08;
       }
+
+      /* Gradient text for the name */
+      .name-gradient {
+        display: inline-block;
+        background: linear-gradient(90deg, #3b82f6 0%, #67e8f9 50%, #3b82f6 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        text-shadow: 0 0 24px rgba(56, 189, 248, 0.12);
+      }
+
       .sub {
         margin: 0;
+        max-width: 72ch;
         color: var(--muted);
-        font-size: 1.05rem;
+        font-size: 1.06rem;
+      }
+
+      .badge {
+        display: inline-flex;
+        gap: 10px;
+        align-items: center;
+        margin-top: 14px;
+        font-size: 0.92rem;
+        color: var(--muted2);
+        border: 1px solid var(--border);
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(0,0,0,0.18);
+      }
+
+      .badge-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: rgba(56, 189, 248, 0.8);
+        box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.18);
       }
 
       .grid {
         margin-top: 18px;
         display: grid;
         grid-template-columns: 1fr;
-        gap: 14px;
+        gap: 16px;
       }
 
-      @media (min-width: 820px) {
-        .grid { grid-template-columns: 1.2fr 0.8fr; }
+      @media (min-width: 900px) {
+        .grid { grid-template-columns: 1.22fr 0.78fr; }
       }
 
       .card {
-        padding: 20px 18px;
-        border-radius: 14px;
+        padding: 22px 20px;
+        border-radius: var(--radius-sm);
         border: 1px solid var(--border);
-        background: rgba(18, 24, 37, 0.75);
+        background: var(--panel);
+        box-shadow: 0 10px 26px rgba(0,0,0,0.28);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+      }
+
+      .card:hover {
+        border-color: var(--border-strong);
+        box-shadow: 0 14px 34px rgba(0,0,0,0.36);
+      }
+
+      /* Two-tone typography: base + muted */
+      .card p, .card li, .card .meta, .card .subtle, .card .caption {
+        color: var(--muted);
+      }
+      .card strong, .card b, .card h1, .card h2, .card h3 {
+        color: var(--text);
       }
 
       h2 {
         margin: 0 0 10px;
-        font-size: 1.1rem;
+        font-size: 1.08rem;
+        letter-spacing: 0.2px;
       }
 
-      p { margin: 0 0 12px; color: var(--text); }
+      p { margin: 0 0 12px; }
       p.muted { color: var(--muted); }
 
-      a {
-        color: var(--link);
-        text-decoration: none;
+      .small {
+        font-size: 0.95rem;
+        color: var(--muted);
       }
-      a:hover { text-decoration: underline; }
 
       ul {
         margin: 10px 0 0;
         padding-left: 18px;
       }
-      li { margin: 8px 0; }
-
-      .badge {
-        display: inline-block;
-        font-size: 0.85rem;
-        color: var(--muted);
-        border: 1px solid var(--border);
-        padding: 6px 10px;
-        border-radius: 999px;
-        margin-top: 10px;
-      }
+      li { margin: 8px 0; color: var(--text); }
 
       footer {
         margin-top: 22px;
-        color: var(--muted);
+        color: var(--muted2);
         font-size: 0.92rem;
         text-align: center;
       }
 
-      .small {
-        font-size: 0.95rem;
-        color: var(--muted);
+      /* Nice selection color */
+      ::selection {
+        background: rgba(56, 189, 248, 0.22);
+      }
+
+      a {
+        color: var(--link);
+        text-decoration: none;
+        outline: none;
+      }
+
+      a:hover { text-decoration: underline; }
+      a:focus-visible {
+        border-radius: 8px;
+        box-shadow: 0 0 0 4px var(--ring);
       }
     </style>
 
@@ -143,11 +257,13 @@
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Claire Mira Shaw",
-        "url": "https://clairemira.github.io",
+        "url": "https://miranova.dev",
         "sameAs": [
+          "https://clairemira.github.io",
+          "https://github.com/clairemira",
           "https://www.linkedin.com/in/clairemirashaw",
           "https://orcid.org/0009-0006-9340-585X",
-          "https://github.com/clairemira",
+          "https://sciprofiles.com/profile/clairemirashaw",
         ]
       }
     </script>
@@ -155,12 +271,17 @@
 
   <body>
     <main class="wrap">
-      <header>
-        <h1>Claire Mira Shaw</h1>
-        <p class="sub">
-          Author of <strong>The Miranova Matrix</strong>. An operational framework exploring constraint, capacity, and coherence across complex systems.
-        </p>
-        <div class="badge">Last updated: <span id="last-updated">2026-01-23</span></div>
+      <header class="hero">
+        <div class="hero-inner">
+          <h1><span class="name-gradient">Claire Mira Shaw</span></h1>
+          <p class="sub">
+            Author of <strong>The Miranova Matrix</strong>. An operational framework exploring constraint, capacity, and coherence across complex systems.
+          </p>
+          <div class="badge" aria-label="Last updated">
+            <span class="badge-dot" aria-hidden="true"></span>
+            Last updated: <span id="last-updated">2026-01-23</span>
+          </div>
+        </div>
       </header>
 
       <section class="grid" aria-label="Content">
@@ -178,7 +299,7 @@
             <li><a href="./pdf/">View all PDF versions</a></li>
           </ul>
 
-          <p class="small" style="margin-top:12px;">
+          <p class="small" style="margin-top: 12px;">
             <strong>Note:</strong> This work was compiled with assistance from AI tools for language refinement and image generation (acknowledged in the document).
           </p>
         </article>
@@ -192,7 +313,7 @@
             <li><strong>SciProfiles:</strong> <a href="https://sciprofiles.com/profile/clairemirashaw" target="_blank" rel="noopener">https://sciprofiles.com/profile/clairemirashaw</a></li>
           </ul>
 
-          <h2 style="margin-top:18px;">About Me</h2>
+          <h2 style="margin-top: 18px;">About Me</h2>
           <p class="muted">
             I'm interested in how stable structure and meaningful behaviour can emerge from constraint, limited capacity, and nonlocal update rules.
           </p>

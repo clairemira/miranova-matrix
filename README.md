@@ -3,7 +3,7 @@
 This page hosts a fast-access public mirror of **The Miranova Matrix**, an operational framework exploring emergence, irreversibility, and nonlocal update structure.
 
 📄 **Download the PDF**
-[The Miranova Matrix (v1.0.1).pdf](./The%20Miranova%20Matrix%20(1.0.1).pdf)
+[The Miranova Matrix (v1.2.0).pdf](./The%20Miranova%20Matrix%20(1.2.0).pdf)
 
 ---
 
